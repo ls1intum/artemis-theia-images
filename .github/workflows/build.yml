@@ -1,0 +1,25 @@
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    strategy:
+      matrix:
+        docker-context: ['theia-blueprint/.']
+        include:
+          - dockerfile: BaseDockerfile
+            image-name: ghcr.io/ls1intum/theia/base
+          - dockerfile: JavaDockerfile
+            image-name: ghcr.io/ls1intum/theia/java
+    uses: ls1intum/.github/.github/workflows/build-and-push-docker-image.yml@main
+    with:
+      dockerfile: ${{ matrix.dockerfile }}
+      image-name: ${{ matrix.image-name }}
+      docker-context: ${{ matrix.docker-context }}
+    secrets: inherit
+

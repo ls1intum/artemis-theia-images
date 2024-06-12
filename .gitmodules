@@ -1,0 +1,3 @@
+[submodule "theia-blueprint"]
+	path = theia-blueprint
+	url = https://github.com/eclipse-theia/theia-blueprint
