@@ -12,13 +12,13 @@ jobs:
       matrix:
         docker-context: ['theia-blueprint/.']
         include:
-          - dockerfile: BaseDockerfile
+          - docker-file: BaseDockerfile
             image-name: ghcr.io/ls1intum/theia/base
-          - dockerfile: JavaDockerfile
+          - docker-file: JavaDockerfile
             image-name: ghcr.io/ls1intum/theia/java
     uses: ls1intum/.github/.github/workflows/build-and-push-docker-image.yml@main
     with:
-      dockerfile: ${{ matrix.dockerfile }}
+      docker-file: ${{ matrix.docker-file }}
       image-name: ${{ matrix.image-name }}
       docker-context: ${{ matrix.docker-context }}
     secrets: inherit
