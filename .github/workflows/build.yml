@@ -14,8 +14,6 @@ jobs:
         include:
           - docker-file: BaseDockerfile
             image-name: ghcr.io/ls1intum/theia/base
-          - docker-file: JavaDockerfile
-            image-name: ghcr.io/ls1intum/theia/java
     uses: ls1intum/.github/.github/workflows/build-and-push-docker-image.yml@main
     with:
       docker-file: ${{ matrix.docker-file }}
